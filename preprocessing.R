@@ -8,6 +8,11 @@ extract_salutations <- function(dataset) { }
 
 encode_variables <- function(dataset) { }
 
+#' Infere Age
+#'
+#' Fills in the missing ages in the dataset using the salutations
+#'
+#' @param dataset
 infere_age <- function(dataset) { }
 
 cleanup <- function(dataset) { }
