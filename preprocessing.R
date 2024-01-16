@@ -12,6 +12,7 @@ infere_age <- function(dataset) { }
 
 cleanup <- function(dataset) { }
 
+cabin_data_extraction <- function(dataset) {}
 
 #' Generate Preprocessed Data
 #'
