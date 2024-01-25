@@ -12,6 +12,21 @@ infere_age <- function(dataset) { }
 
 cleanup <- function(dataset) { }
 
+#' Extracts the factors Deck and Side from the column Cabin
+#'
+#' Deck (which is the letter the cabin starts with) and Side (which is starboard
+#' for odd and port for even cabin numbers) are extracted from Cabin and coded
+#' as factors.
+#'
+#' @details In the event that a combination of cabins is listed for each a group
+#' of multiple people the cabins are distributed arbitrarily among the group.
+#' Example: If there are four people in the dataset that have "A11 B12 C13" as
+#' the cabin, these four people will be assigned "A11" "B12" "C13" "A11". This
+#' way the number of people with a cabin can be guaranteed to be the same as in
+#' the original dataset.
+#'
+#' @param dataset The original dataset
+#' @return The same dataset with the additional columns Deck and Side
 extract_cabin_data <- function(dataset) {
     dataset[["Deck"]] <- NA
     dataset[["Side"]] <- NA
@@ -27,10 +42,9 @@ extract_cabin_data <- function(dataset) {
     lengths <- sapply(split_cabins, length)
     # enumerate occurrences of each distinct element
     occurrences <- ave(seq_along(cabins), cabins, FUN = function(x) match(x, x))
-    # if you reach the end of the list start again with the first
-    # element when this isn't done every index that goes out of bounds
-    # will be mapped to NA when applying the indices on split_cabins
+    # if you reach the end of the list start again with the first element
     occurrences <- (occurrences - 1) %% lengths + 1
+    # in every row with only one cabin we pick that first cabin
     indices <- ifelse(cabins %in% multiple_cabins, occurrences, 1)
     # set each cabins[index] to split_cabins[index][indices[index]] which
     # means if multiple values are present pick the one specified in indices
