@@ -19,6 +19,9 @@ extract_salutations <- function(dataset) {
     )
 
     MAPPING <- list(
+
+        # Later on for the age inferring, it'll be easier and more accurate
+        # this way (so by converting Dr., Rev., etc... to Mr.)
         "Mr." = "Mr.",
         "Dr." = "Mr.",
         "Rev." = "Mr.",
