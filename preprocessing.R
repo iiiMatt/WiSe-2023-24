@@ -6,11 +6,21 @@
 #' @param dataset
 extract_salutations <- function(dataset) { }
 
-encode_variables <- function(dataset) { }
+encode_variables <- function(dataset) {
+  dataset$Sex <- factor(dataset$Sex, levels = c("male", "female"), labels = c("male", "female"))
+  dataset$Survived <- factor(dataset$Survived, levels = c(0,1), labels = c("no", "yes"))
+  dataset$Embarked <- factor(dataset$Embarked, levels = c("C", "Q", "S"), labels = c("Cherbourg", "Queenstown", "Southhampton"))
+  dataset$Pclass <- as.ordered(dataset$Pclass)
+}
 
 infere_age <- function(dataset) { }
 
-cleanup <- function(dataset) { }
+cleanup <- function(dataset) { 
+  dataset <- subset(dataset, select = -PassengerId)
+  dataset <- subset(dataset, select = -Name)
+  dataset <- subset(dataset, select = -Ticket)
+  dataset <- subset(dataset, select = -Cabin)
+}
 
 
 #' Generate Preprocessed Data
@@ -29,5 +39,3 @@ generate_preprocessed_data <- function() {
 
     dataset
 }
-
-abc
