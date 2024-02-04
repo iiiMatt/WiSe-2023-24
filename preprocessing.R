@@ -31,16 +31,13 @@ extract_salutations <- function(dataset) {
         "Don." = "Mr.",
         "Capt." = "Mr.",
         "Jonkheer." = "Mr.",
-
         "Mrs." = "Mrs.",
         "Mme." = "Mrs.",
         "the Countess." = "Mrs.",
         "Lady." = "Mrs.",
-
         "Miss." = "Miss.",
         "Ms." = "Miss.",
         "Mlle." = "Miss.",
-
         "Master." = "Master."
     )
 
@@ -70,8 +67,9 @@ extract_salutations <- function(dataset) {
     names <- dataset[["Name"]]
     salutations <- rep_len("", length.out = length(names))
 
-    for (salut in SALUTS)
+    for (salut in SALUTS) {
         salutations[grepl(salut, names, fixed = TRUE)] <- MAPPING[[salut]]
+    }
 
 
     dataset[["Salutation"]] <- factor(salutations)
@@ -80,11 +78,23 @@ extract_salutations <- function(dataset) {
 }
 
 encode_variables <- function(dataset) {
-  dataset$Sex <- factor(dataset$Sex, levels = c("male", "female"), labels = c("male", "female"))
-  dataset$Survived <- factor(dataset$Survived, levels = c(0,1), labels = c("no", "yes"))
-  dataset$Embarked <- factor(dataset$Embarked, levels = c("C", "Q", "S"), labels = c("Cherbourg", "Queenstown", "Southhampton"))
-  dataset$Pclass <- factor(data[["Pclass"]], levels = c(3, 2, 1), ordered = TRUE)
-  dataset
+    dataset$Sex <- factor(dataset$Sex,
+        levels = c("male", "female"),
+        labels = c("male", "female")
+    )
+    dataset$Survived <- factor(dataset$Survived,
+        levels = c(0, 1),
+        labels = c("no", "yes")
+    )
+    dataset$Embarked <- factor(dataset$Embarked,
+        levels = c("C", "Q", "S"),
+        labels = c("Cherbourg", "Queenstown", "Southhampton")
+    )
+    dataset$Pclass <- factor(dataset[["Pclass"]],
+        levels = c(3, 2, 1),
+        ordered = TRUE
+    )
+    dataset
 }
 
 #' Infer Age
@@ -105,12 +115,12 @@ infer_age <- function(dataset) {
     dataset
 }
 
-cleanup <- function(dataset) { 
-  dataset <- subset(dataset, select = -PassengerId)
-  dataset <- subset(dataset, select = -Name)
-  dataset <- subset(dataset, select = -Ticket)
-  dataset <- subset(dataset, select = -Cabin)
-  dataset
+cleanup <- function(dataset) {
+    dataset <- subset(dataset, select = -PassengerId)
+    dataset <- subset(dataset, select = -Name)
+    dataset <- subset(dataset, select = -Ticket)
+    dataset <- subset(dataset, select = -Cabin)
+    dataset
 }
 
 #' Extracts the factors Deck and Side from the column Cabin
@@ -181,6 +191,7 @@ generate_preprocessed_data <- function() {
     dataset <- encode_variables(dataset)
     dataset <- cleanup(dataset)
 
-    dataset
+    saveRDS(dataset, file = "titanic_cleaned.Rds")
 }
 
+generate_preprocessed_data()
