@@ -80,7 +80,11 @@ extract_salutations <- function(dataset) {
 }
 
 encode_variables <- function(dataset) {
-    dataset
+  dataset$Sex <- factor(dataset$Sex, levels = c("male", "female"), labels = c("male", "female"))
+  dataset$Survived <- factor(dataset$Survived, levels = c(0,1), labels = c("no", "yes"))
+  dataset$Embarked <- factor(dataset$Embarked, levels = c("C", "Q", "S"), labels = c("Cherbourg", "Queenstown", "Southhampton"))
+  dataset$Pclass <- factor(data[["Pclass"]], levels = c(3, 2, 1), ordered = TRUE)
+  dataset
 }
 
 #' Infer Age
@@ -101,8 +105,12 @@ infer_age <- function(dataset) {
     dataset
 }
 
-cleanup <- function(dataset) {
-    dataset
+cleanup <- function(dataset) { 
+  dataset <- subset(dataset, select = -PassengerId)
+  dataset <- subset(dataset, select = -Name)
+  dataset <- subset(dataset, select = -Ticket)
+  dataset <- subset(dataset, select = -Cabin)
+  dataset
 }
 
 #' Extracts the factors Deck and Side from the column Cabin
