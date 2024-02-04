@@ -10,7 +10,7 @@ encode_variables <- function(dataset) {
   dataset$Sex <- factor(dataset$Sex, levels = c("male", "female"), labels = c("male", "female"))
   dataset$Survived <- factor(dataset$Survived, levels = c(0,1), labels = c("no", "yes"))
   dataset$Embarked <- factor(dataset$Embarked, levels = c("C", "Q", "S"), labels = c("Cherbourg", "Queenstown", "Southhampton"))
-  dataset$Pclass <- as.ordered(dataset$Pclass)
+  dataset$Pclass <- factor(data[["Pclass"]], levels = c(3, 2, 1), ordered = TRUE)
 }
 
 infere_age <- function(dataset) { }
