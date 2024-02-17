@@ -4,7 +4,11 @@
 #function that outputs chi squared test result and contingency table of two categorical variables 
 
 chisq_test_plus_table <- function(kat_var1, kat_var2) {
-  
+
+  # check if both variables are categorical (purpose of the excercise)
+  if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
+    stop("Both variables need to be categorical.")
+  }
   # contingency table for output and test
   contingency_table <- table(kat_var1, kat_var2)
   
