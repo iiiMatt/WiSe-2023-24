@@ -1,5 +1,16 @@
 # contribution by Mia 
 #descriptive bivariate statistics for the relationship between two categorical variables
 
-#chi squared test 
-#contingency table
+#function that outputs chi squared test result and contingency table of two categorical variables 
+
+chisq_test_plus_table <- function(kat_var1, kat_var2) {
+  
+  # contingency table for output and test
+  contingency_table <- table(kat_var1, kat_var2)
+  
+  # chi-squared-test to output results
+  chi_squared_result <- chisq.test(contingency_table)
+
+  # return results in list
+  return( list(contingency_table = contingency_table, chi_squared_result = chi_squared_result))
+}
