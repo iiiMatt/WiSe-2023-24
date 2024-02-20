@@ -84,13 +84,11 @@ calculateBivariateStats <- function(data, metricVar, dichotomousVar) {
     print(tTestResult)
 }
   
-  # contribution by Mia
-# descriptive bivariate statistics
-# for the relationship between two categorical variables
 
-# function that outputs chi squared test result and
-# contingency table of two categorical variables
-
+#' Calcualates and prints the results of descriptive bivariate statistics of a 
+#' contengency table  and a chi squared test for two categorical variables 
+#' @param kat_var1 A kategorical variable
+#' @param kat_var2 A second kategorical variable with the same length as the first 
 chisq_test_plus_table <- function(kat_var1, kat_var2) {
   # check if both variables are categorical (purpose of the excercise)
   if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
