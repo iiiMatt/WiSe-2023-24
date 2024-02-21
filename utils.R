@@ -3,7 +3,8 @@ library(gridExtra)
 library(ggplot2)
 library(dplyr)
 
-
+#'2a- i)
+#' DESCRIPTION IS STILL MISSING
 describe_metric <- function(x){
   data.frame(Min = min(x, na.rm=T), erstesQuartil =quantile(x, 0.25, na.rm=T) , 
              Median = median(x, na.rm=T), Mean =mean(x, na.rm=T), 
@@ -13,6 +14,7 @@ describe_metric <- function(x){
              )
 }
 
+#'2a-ii)
 #' Prints descriptive statistics for a categorial variable x and additional
 #' ones for ordered factors.
 #' @param x A factor (may be ordered).
@@ -50,7 +52,39 @@ describe_categorial <- function(
         cat("Upper quartile:                     ", q3, "\n")
     }
   }
+
+#'2a-iii)
+#' Calcualates and prints the results of descriptive bivariate statistics of a 
+#' contengency table  and a chi squared test for two categorical variables 
+#' @param kat_var1 A kategorical variable
+#' @param kat_var2 A second kategorical variable with the same length as the first 
+chisq_test_plus_table <- function(kat_var1, kat_var2) {
+  # check if both variables are categorical (purpose of the excercise)
+  if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
+    stop("Both variables need to be categorical.")
+  }
+  # contingency table for output and test
+  contingency_table <- table(kat_var1, kat_var2)
+
+  # chi-squared-test to output results
+  chi_squared_result <- chisq.test(contingency_table)
+
+  #cat output to explain results/ output plus print results on console
   
+  cat("The results contain a contingency table and a chi squared test regarding the following hypotheses:\n
+      Null Hypothesis (H0): There is no association between the two categorical variables. \n
+      Alternative Hypothesis (H1): There is an association between the two categorical variables.\n
+      If p-value < alpha: Reject the null hypothesis. \n
+      If p-value >= alpha: Fail to reject the null hypothesis.")
+  print(contingency_table)
+  print(chi_squared_result)
+  
+  return( list(
+    contingency_table = contingency_table, 
+    chi_squared_result = chi_squared_result))
+}
+
+#'2a-iv)
 #' Calculate Descriptive and Inferential Statistics
 #' for a Metric and a Dichotomous Variable
 #'
@@ -88,63 +122,8 @@ calculateBivariateStats <- function(data, metricVar, dichotomousVar) {
     cat("\nT-Test Results:\n")
     print(tTestResult)
 }
-  
 
-#' Calcualates and prints the results of descriptive bivariate statistics of a 
-#' contengency table  and a chi squared test for two categorical variables 
-#' @param kat_var1 A kategorical variable
-#' @param kat_var2 A second kategorical variable with the same length as the first 
-chisq_test_plus_table <- function(kat_var1, kat_var2) {
-  # check if both variables are categorical (purpose of the excercise)
-  if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
-    stop("Both variables need to be categorical.")
-  }
-  # contingency table for output and test
-  contingency_table <- table(kat_var1, kat_var2)
-
-  # chi-squared-test to output results
-  chi_squared_result <- chisq.test(contingency_table)
-
-  #cat output to explain results/ output plus print results on console
-  
-  cat("The results contain a contingency table and a chi squared test regarding the following hypotheses:\n
-      Null Hypothesis (H0): There is no association between the two categorical variables. \n
-      Alternative Hypothesis (H1): There is an association between the two categorical variables.\n
-      If p-value < alpha: Reject the null hypothesis. \n
-      If p-value >= alpha: Fail to reject the null hypothesis.")
-  print(contingency_table)
-  print(chi_squared_result)
-  
-  return( list(
-    contingency_table = contingency_table, 
-    chi_squared_result = chi_squared_result))
-}
-
-#'2a - vi)
-
-#' Additional functions suitable for description and visualization
-#' The function takes two variables, var1 and var2, as inputs. It then creates a mosaic plot using these variables
-#' @param var1 one Variable
-#' @param var2 another vaiable
-#' @return a mosaicplot
-Mosaikplot <- function(var1, var2){
-  mosaicplot(table(var1, var2 ), main = "Mosaic Plot", shade = TRUE, xlab = deparse(substitute(var1)) , ylab = deparse(substitute(var2)))
-}
-
-#' The function takes two variables, var1 and var2, as inputs. It then creates a boxplot of var2 against var1, with a trendline added.
-#' @param var1 one Variable
-#' @param var2 another vaiable
-#' @return a boxplot with trendlinie
-
-Boxplots_with_Trendline <- function(var1, var2) {
-  plot(var1, var2, main = "Boxplot with Trendline",
-       xlab = deparse(substitute(var1)), ylab = deparse(substitute(var2)))
-  abline(lm(var2 ~ var1), col = "red")
-}
-
-
-
-
+#'2a-v)
 #' Visualize Categorical Variables Relation to Survival on Titanic
 #'
 #' This function creates visualizations for the relationship between
@@ -186,4 +165,23 @@ visualize_categorical_variables <- function(df) {
     grid.arrange(plot_pclass, plot_sex, plot_embarked, nrow = 3)
 }
 
+#'2a - vi)
+#' Additional functions suitable for description and visualization
+#' The function takes two variables, var1 and var2, as inputs. It then creates a mosaic plot using these variables
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a mosaicplot
+Mosaikplot <- function(var1, var2){
+  mosaicplot(table(var1, var2 ), main = "Mosaic Plot", shade = TRUE, xlab = deparse(substitute(var1)) , ylab = deparse(substitute(var2)))
+}
 
+#' The function takes two variables, var1 and var2, as inputs. It then creates a boxplot of var2 against var1, with a trendline added.
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a boxplot with trendlinie
+
+Boxplots_with_Trendline <- function(var1, var2) {
+  plot(var1, var2, main = "Boxplot with Trendline",
+       xlab = deparse(substitute(var1)), ylab = deparse(substitute(var2)))
+  abline(lm(var2 ~ var1), col = "red")
+}
