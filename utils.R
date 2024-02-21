@@ -1,4 +1,8 @@
 source("helpers.R")
+library(gridExtra)
+library(ggplot2)
+library(dplyr)
+
 
 describe_metric <- function(x){
   data.frame(Min = min(x, na.rm=T), erstesQuartil =quantile(x, 0.25, na.rm=T) , 
@@ -128,9 +132,7 @@ Boxplots_with_Trendline <- function(var1, var2) {
   abline(lm(var2 ~ var1), col = "red")
 }
 
-library(gridExtra)
-library(ggplot2)
-library(dplyr)
+
 
 
 #' Visualize Categorical Variables Relation to Survival on Titanic
