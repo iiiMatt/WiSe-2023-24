@@ -4,7 +4,7 @@ library(ggplot2)
 library(dplyr)
 
 #'2a- i)
-#' DESCRIPTION IS STILL MISSING
+#' Prints descriptive statistics for a metric variable x.
 describe_metric <- function(x){
   data.frame(Min = min(x, na.rm=T), erstesQuartil =quantile(x, 0.25, na.rm=T) , 
              Median = median(x, na.rm=T), Mean =mean(x, na.rm=T), 
