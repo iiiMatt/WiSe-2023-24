@@ -45,6 +45,7 @@ describe_categorial <- function(
         cat("Median:                             ", med, "\n")
         cat("Upper quartile:                     ", q3, "\n")
     }
+  }
   
 #' Calculate Descriptive and Inferential Statistics
 #' for a Metric and a Dichotomous Variable
