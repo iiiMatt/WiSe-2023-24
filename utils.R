@@ -4,7 +4,11 @@ library(ggplot2)
 library(dplyr)
 
 #'2a- i)
-#' DESCRIPTION IS STILL MISSING
+#' Returns some descriptive statistics for a metric variable in form of a
+#' dataframe for simple formatting. All NA values are removed before
+#' calculation.
+#' @param x A metric variable.
+#' @return A one row dataframe with the different statistics in columns.
 describe_metric <- function(x){
   data.frame(Min = min(x, na.rm=T), erstesQuartil =quantile(x, 0.25, na.rm=T) , 
              Median = median(x, na.rm=T), Mean =mean(x, na.rm=T), 
