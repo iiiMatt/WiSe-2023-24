@@ -120,11 +120,21 @@ chisq_test_plus_table <- function(kat_var1, kat_var2) {
     chi_squared_result = chi_squared_result))
 }
 
-#2a - vi)
-#Additional functions suitable for description and visualization
+#'2a - vi)
+
+#' Additional functions suitable for description and visualization
+#' The function takes two variables, var1 and var2, as inputs. It then creates a mosaic plot using these variables
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a mosaicplot
 Mosaikplot <- function(var1, var2){
   mosaicplot(table(var1, var2 ), main = "Mosaic Plot", shade = TRUE, xlab = deparse(substitute(var1)) , ylab = deparse(substitute(var2)))
 }
+
+#' The function takes two variables, var1 and var2, as inputs. It then creates a boxplot of var2 against var1, with a trendline added.
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a boxplot with trendlinie
 
 Boxplots_with_Trendline <- function(var1, var2) {
   plot(var1, var2, main = "Boxplot with Trendline",
