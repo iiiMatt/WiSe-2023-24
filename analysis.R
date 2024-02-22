@@ -66,3 +66,42 @@ surv_deck = chisq_test_plus_table(dataset$Survived, dataset$Deck)
 sum(is.na(dataset$Deck))
 sum(is.na(dataset$Side))
 #too many NAs to proper analyze 
+
+#--------------------------------------------------------------------------
+# iv) 
+# Metric and a Dichotomous Variable
+#--------------------------------------------------------------------------
+#'t-test to assess the difference in a metric variable
+#'across two groups defined by a dichotomous variable
+#'alpha set 0.05
+
+str(dataset)
+#'useful metric variables:age and fare 
+#'useful dichotomous variable: survived yes or not 
+
+#Fare and Survival 
+calculateBivariateStats(dataset, "Fare", "Survived")
+#mean and sd regarding groups of survivors or not
+'$no
+mean       sd 
+22.11789 31.38821 
+
+$yes
+mean       sd 
+48.39541 66.59700 '
+#'the individuals who died paid in average much less for their tickets
+#'than the ones who survived
+#'since sd of survivers regarding fare is big 
+#'apparently still some survivors with much cheaper or even much more expensive fare
+#'SD of people who died is much smaller
+#'seems like the people who paid the most got rescued first and barely died or  
+#'even not at all
+#'----------------------------
+#Welch two sample t-test result:
+# p-value = 2.699e-11<alpha
+#' indicates that the true difference in means between the groups 
+#' is not equal to zero
+# as seen before reagrding the means: seems like it made a difference of how much money 
+#'a person paid to embark the titanic
+#'likely that the rich people and women got rescued first 
+#'suits the society back then
