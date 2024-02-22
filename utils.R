@@ -146,8 +146,8 @@ visualisation_categorial_variable <- function(df){
   # I calculate the Relative frequency of the  survivors according to the sex
   # they have. 
   
-  survivemanner <- sum(df$Sex == "male" & df$Survive == "yes") / sum(df$Survive == "yes")
-  survivefrauen <- sum(df$Sex == "female" & df$Survive == "yes") / sum(df$Survive == "yes")
+  survivemen <- sum(df$Sex == "male" & df$Survive == "yes") / sum(df$Survive == "yes")
+  survivewomen <- sum(df$Sex == "female" & df$Survive == "yes") / sum(df$Survive == "yes")
   
   # I calculate the relative frequency of the  survivors according to the embarked place 
   # they have. 
@@ -167,7 +167,7 @@ visualisation_categorial_variable <- function(df){
   df_class_suv <- data.frame(Pclass = c("Class1", "Class2", "Class3"),
                          relativeHaeufigkeit = c(class1_suv , class2_suv , class3_suv))
   df_sex_suv <- data.frame(Sex = c("Man", "Woman"),
-                       relativeHaeufigkeit = c(survivemanner , survivefrauen))
+                       relativeHaeufigkeit = c(survivemen , survivewomen))
   df_embarked_suv <- data.frame(Embarked = c("South", "Queen" , "Cher", "Unknown"),
                             relativeHaeufigkeit = c(embarkedSouthhampton_suv , embarkedQueenstown_suv ,embarkedCherbourg_suv, embarkedUnknown_suv))
   
@@ -205,8 +205,8 @@ visualisation_categorial_variable <- function(df){
   # I calculate the relative frequency of the  dead persons according to the sex
   # they have
   
-  diedmanner <- sum(df$Sex == "male" & df$Survive == "no") / sum(df$Survive == "no")
-  diedfrauen <- sum(df$Sex == "female" & df$Survive == "no") / sum(df$Survive == "no")
+  diedmen <- sum(df$Sex == "male" & df$Survive == "no") / sum(df$Survive == "no")
+  diedwomen <- sum(df$Sex == "female" & df$Survive == "no") / sum(df$Survive == "no")
   
   # I calculate the relative frequency of the  dead persons according to the the embarked place
   # they have 
@@ -226,7 +226,7 @@ visualisation_categorial_variable <- function(df){
   df_class_died <- data.frame(Pclass = c("Class1", "Class2", "Class3"),
                              relativeHaeufigkeit = c(class1_died , class2_died , class3_died))
   df_sex_died <- data.frame(Sex = c("Man", "Woman"),
-                           relativeHaeufigkeit = c(diedmanner , diedfrauen))
+                           relativeHaeufigkeit = c(diedmen , diedwomen))
   df_embarked_died <- data.frame(Embarked = c("South", "Queen" , "Cher", "Unknown"),
                                 relativeHaeufigkeit = c(embarkedSouthhampton_died , embarkedQueenstown_died ,embarkedCherbourg_died, embarkedUnknown_died))
   
