@@ -40,8 +40,8 @@ surv_salutation = chisq_test_plus_table(dataset$Survived, dataset$Salutation)
 surv_salutation[1]
 'kat_var2
 kat_var1 Master. Miss. Mr. Mrs.
-no       17    55 451   26
-yes      23   130  87  102'
+    no       17    55 451   26
+    yes      23   130  87  102'
 #' around 7 out of 10 Miss. survived 
 #' around 8 out of 20 Mrs. survived 
 #' around 2 out of 10 Mr. survived
@@ -58,3 +58,11 @@ surv_salutation[2]
 #'embarkation and survival 
 #'Numbers in contengency show more survival of female passangers 
 #'and likely death for a Mr.
+
+#survival and deck
+#survival and Side
+surv_deck = chisq_test_plus_table(dataset$Survived, dataset$Deck)
+#warning
+sum(is.na(dataset$Deck))
+sum(is.na(dataset$Side))
+#too many NAs to proper analyze 
