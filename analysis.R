@@ -140,8 +140,8 @@ mean       sd
 
 # 2a - v)
 visualisation_categorial_variable(titanic_cleaned)
-Anzahl_survivor = sum(titanic_cleaned$Survived == "yes")# 342 Person survive
-Anzahl_nicht_survivor = sum(titanic_cleaned$Survived == "no")# 549 Person died
+number_survivor = sum(titanic_cleaned$Survived == "yes")# 342 Person survive
+number_not_survivor = sum(titanic_cleaned$Survived == "no")# 549 Person died
 
 # 32% of survivors were men
 # 68% of survivors were women
