@@ -3,7 +3,8 @@ library(gridExtra)
 library(ggplot2)
 library(dplyr)
 
-
+#'2a- i)
+#' Prints descriptive statistics for a metric variable x.
 describe_metric <- function(x){
   data.frame(Min = min(x, na.rm=T), erstesQuartil =quantile(x, 0.25, na.rm=T) , 
              Median = median(x, na.rm=T), Mean =mean(x, na.rm=T), 
@@ -13,6 +14,7 @@ describe_metric <- function(x){
              )
 }
 
+#'2a-ii)
 #' Prints descriptive statistics for a categorial variable x and additional
 #' ones for ordered factors.
 #' @param x A factor (may be ordered).
@@ -50,7 +52,39 @@ describe_categorial <- function(
         cat("Upper quartile:                     ", q3, "\n")
     }
   }
+
+#'2a-iii)
+#' Calcualates and prints the results of descriptive bivariate statistics of a 
+#' contengency table  and a chi squared test for two categorical variables 
+#' @param kat_var1 A kategorical variable
+#' @param kat_var2 A second kategorical variable with the same length as the first 
+chisq_test_plus_table <- function(kat_var1, kat_var2) {
+  # check if both variables are categorical (purpose of the excercise)
+  if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
+    stop("Both variables need to be categorical.")
+  }
+  # contingency table for output and test
+  contingency_table <- table(kat_var1, kat_var2)
+
+  # chi-squared-test to output results
+  chi_squared_result <- chisq.test(contingency_table)
+
+  #cat output to explain results/ output plus print results on console
   
+  cat("The results contain a contingency table and a chi squared test regarding the following hypotheses:\n
+      Null Hypothesis (H0): There is no association between the two categorical variables. \n
+      Alternative Hypothesis (H1): There is an association between the two categorical variables.\n
+      If p-value < alpha: Reject the null hypothesis. \n
+      If p-value >= alpha: Fail to reject the null hypothesis.")
+  print(contingency_table)
+  print(chi_squared_result)
+  
+  return( list(
+    contingency_table = contingency_table, 
+    chi_squared_result = chi_squared_result))
+}
+
+#'2a-iv)
 #' Calculate Descriptive and Inferential Statistics
 #' for a Metric and a Dichotomous Variable
 #'
@@ -88,53 +122,8 @@ calculateBivariateStats <- function(data, metricVar, dichotomousVar) {
     cat("\nT-Test Results:\n")
     print(tTestResult)
 }
-  
 
-#' Calcualates and prints the results of descriptive bivariate statistics of a 
-#' contengency table  and a chi squared test for two categorical variables 
-#' @param kat_var1 A kategorical variable
-#' @param kat_var2 A second kategorical variable with the same length as the first 
-chisq_test_plus_table <- function(kat_var1, kat_var2) {
-  # check if both variables are categorical (purpose of the excercise)
-  if (!is.factor(kat_var1) || !is.factor(kat_var2)) {
-    stop("Both variables need to be categorical.")
-  }
-  # contingency table for output and test
-  contingency_table <- table(kat_var1, kat_var2)
-
-  # chi-squared-test to output results
-  chi_squared_result <- chisq.test(contingency_table)
-
-  #cat output to explain results/ output plus print results on console
-  
-  cat("The results contain a contingency table and a chi squared test regarding the following hypotheses:\n
-      Null Hypothesis (H0): There is no association between the two categorical variables. \n
-      Alternative Hypothesis (H1): There is an association between the two categorical variables.\n
-      If p-value < alpha: Reject the null hypothesis. \n
-      If p-value >= alpha: Fail to reject the null hypothesis.")
-  print(contingency_table)
-  print(chi_squared_result)
-  
-  return( list(
-    contingency_table = contingency_table, 
-    chi_squared_result = chi_squared_result))
-}
-
-#2a - vi)
-#Additional functions suitable for description and visualization
-Mosaikplot <- function(var1, var2){
-  mosaicplot(table(var1, var2 ), main = "Mosaic Plot", shade = TRUE, xlab = deparse(substitute(var1)) , ylab = deparse(substitute(var2)))
-}
-
-Boxplots_with_Trendline <- function(var1, var2) {
-  plot(var1, var2, main = "Boxplot with Trendline",
-       xlab = deparse(substitute(var1)), ylab = deparse(substitute(var2)))
-  abline(lm(var2 ~ var1), col = "red")
-}
-
-
-
-
+#'2a-v)
 #' Visualize Categorical Variables Relation to Survival on Titanic
 #'
 #' This function creates visualizations for the relationship between
@@ -142,38 +131,155 @@ Boxplots_with_Trendline <- function(var1, var2) {
 #' Passenger Class (Pclass), Sex, and Embarkation Point (Embarked)
 #'
 #' @param df A dataframe
-#' @return Returns a grid of three plots visualizing the survival rates by
+#' @return Returns a grid of six plots visualizing the survival rates by
 #' Passenger Class, Sex, and Embarkation Point.
-visualize_categorical_variables <- function(df) {
-    df$Embarked <- factor(df$Embarked, exclude = NULL)
 
-    levels(df$Embarked)[is.na(levels(df$Embarked))] <- "Unknown"
-
-    # Plot for Pclass
-    plot_pclass <- ggplot(df, aes(x = Pclass, fill = Survived)) +
-        geom_bar(position = "fill") +
-        labs(title = "Survival Rate by Passenger Class",
-             x = "Passenger Class", y = "Survival Rate") +
-        scale_fill_brewer(palette = "Set1") +
-        theme_minimal()
-
-    # Plot for Sex
-    plot_sex <- ggplot(df, aes(x = Sex, fill = Survived)) +
-        geom_bar(position = "fill") +
-        labs(title = "Survival Rate by Sex", x = "Sex", y = "Survival Rate") +
-        scale_fill_brewer(palette = "Set2") +
-        theme_minimal()
-
-    # Plot for Embarked (Na is "Unknown")
-    plot_embarked <- ggplot(df, aes(x = Embarked, fill = Survived)) +
-        geom_bar(position = "fill") +
-        labs(title = "Survival Rate by Embarkation Point",
-             x = "Embarkation Point", y = "Survival Rate") +
-        scale_fill_brewer(palette = "Set3") +
-        theme_minimal()
-
-    # Display all plots on the same page
-    grid.arrange(plot_pclass, plot_sex, plot_embarked, nrow = 3)
+visualisation_categorial_variable <- function(df){
+  
+  # I calculate the relative frequency of the  survivors according to the class
+  # they have. 
+  
+  class1_suv <- sum(df$Pclass == 1 & df$Survive == "yes") / sum(df$Survive == "yes")
+  class2_suv <- sum(df$Pclass == 2 & df$Survive == "yes") / sum(df$Survive == "yes")
+  class3_suv <- sum(df$Pclass == 3 & df$Survive == "yes") / sum(df$Survive == "yes")
+  
+  # I calculate the Relative frequency of the  survivors according to the sex
+  # they have. 
+  
+  survivemen <- sum(df$Sex == "male" & df$Survive == "yes") / sum(df$Survive == "yes")
+  survivewomen <- sum(df$Sex == "female" & df$Survive == "yes") / sum(df$Survive == "yes")
+  
+  # I calculate the relative frequency of the  survivors according to the embarked place 
+  # they have. 
+  
+  embarkedSouthhampton_suv <- sum(df$Embarked == "Southhampton" & df$Survive == "yes") / sum(df$Survive == "yes")
+  embarkedQueenstown_suv <- sum(df$Embarked == "Queenstown" & df$Survive == "yes") / sum(df$Survive == "yes")
+  embarkedCherbourg_suv <- sum(df$Embarked == "Cherbourg" & df$Survive == "yes") / sum(df$Survive == "yes")
+  
+  # In the column i replace the NA by an empty space. Then I count the lines whose content has length 0
+  # and I calculate their relative frequenty of the  survivors according that we dont know where they embarked .
+  
+  df$Embarked[is.na(df$Embarked)] <- ""
+  embarkedUnknown_suv <- sum(nchar(df$Embarked) == 0 & df$Survive == "yes")/ sum(df$Survive == "yes")
+  
+  # here i create  dataframes for the survivors variables with two columns (the variable and relative frequency) 
+  
+  df_class_suv <- data.frame(Pclass = c("Class1", "Class2", "Class3"),
+                         relativeHaeufigkeit = c(class1_suv , class2_suv , class3_suv))
+  df_sex_suv <- data.frame(Sex = c("Man", "Woman"),
+                       relativeHaeufigkeit = c(survivemen , survivewomen))
+  df_embarked_suv <- data.frame(Embarked = c("South", "Queen" , "Cher", "Unknown"),
+                            relativeHaeufigkeit = c(embarkedSouthhampton_suv , embarkedQueenstown_suv ,embarkedCherbourg_suv, embarkedUnknown_suv))
+  
+  # I construct  histograms showing the number of people who survive according to the variable
+  
+  plot_sex_suv <- ggplot(data = df_sex_suv, aes(x = factor(Sex, Sex), y = relativeHaeufigkeit, fill = Sex)) +
+    labs(title = "Survival Rate by Passenger Sex", x = "Sex", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  plot_Embarked_suv <- ggplot(data = df_embarked_suv, aes(x = factor(Embarked, Embarked), y = relativeHaeufigkeit, fill = Embarked)) +
+    labs(title = "Survival Rate by Embarked Place", x = "Embarked", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  plot_class_suv <- ggplot(data = df_class_suv, aes(x = factor(Pclass, Pclass), y = relativeHaeufigkeit, fill = Pclass)) +
+    labs(title = "Survival Rate by Passenger Class", x = "Pclass", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  
+  # I calculate the relative frequency of the  dead persons according to the class
+  # they have.
+  
+  class1_died <- sum(df$Pclass == 1 & df$Survive == "no") / sum(df$Survive == "no")
+  class2_died <- sum(df$Pclass == 2 & df$Survive == "no") / sum(df$Survive == "no")
+  class3_died <- sum(df$Pclass == 3 & df$Survive == "no") / sum(df$Survive == "no")
+  
+  # I calculate the relative frequency of the  dead persons according to the sex
+  # they have
+  
+  diedmen <- sum(df$Sex == "male" & df$Survive == "no") / sum(df$Survive == "no")
+  diedwomen <- sum(df$Sex == "female" & df$Survive == "no") / sum(df$Survive == "no")
+  
+  # I calculate the relative frequency of the  dead persons according to the the embarked place
+  # they have 
+  
+  embarkedSouthhampton_died <- sum(df$Embarked == "Southhampton" & df$Survive == "no") / sum(df$Survive == "no")
+  embarkedQueenstown_died <- sum(df$Embarked == "Queenstown" & df$Survive == "no") / sum(df$Survive == "no")
+  embarkedCherbourg_died <- sum(df$Embarked == "Cherbourg" & df$Survive == "no") / sum(df$Survive == "no")
+  
+  # In the column i replace the NA by an empty space. Then I count the lines whose content has length 0
+  # and I calculate their relative frequenty of the  dead person according that we dont know where they embarked .
+  
+  df$Embarked[is.na(df$Embarked)] <- ""
+  embarkedUnknown_died <- sum(nchar(df$Embarked) == 0 & df$Survive == "no")/ sum(df$Survive == "no")
+  
+  # here i create  dataframes for the dead persons variables with two columns (the variable and relative frequency)
+  
+  df_class_died <- data.frame(Pclass = c("Class1", "Class2", "Class3"),
+                             relativeHaeufigkeit = c(class1_died , class2_died , class3_died))
+  df_sex_died <- data.frame(Sex = c("Man", "Woman"),
+                           relativeHaeufigkeit = c(diedmen , diedwomen))
+  df_embarked_died <- data.frame(Embarked = c("South", "Queen" , "Cher", "Unknown"),
+                                relativeHaeufigkeit = c(embarkedSouthhampton_died , embarkedQueenstown_died ,embarkedCherbourg_died, embarkedUnknown_died))
+  
+  # I construct  histograms showing the number of people who died according to the variable
+  
+  plot_sex_died <- ggplot(data = df_sex_died, aes(x = factor(Sex, Sex), y = relativeHaeufigkeit, fill = Sex)) +
+    labs(title = "Death Rate by Passenger Sex", x = "Sex", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  plot_Embarked_died <- ggplot(data = df_embarked_died, aes(x = factor(Embarked, Embarked), y = relativeHaeufigkeit, fill = Embarked)) +
+    labs(title = "Death Rate by Embarked Place", x = "Embarked", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  plot_class_died <- ggplot(data = df_class_died, aes(x = factor(Pclass, Pclass), y = relativeHaeufigkeit, fill = Pclass)) +
+    labs(title = "DeathRate by Passenger Class", x = "Pclass", y = "relative Frequencies") +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = round(relativeHaeufigkeit, 2)), nudge_y = 0.05) +
+    scale_fill_brewer(palette = "Set1") +
+    theme_minimal()
+  
+  # we display all the histograms on the same page 
+  
+  result <- grid.arrange(plot_sex_suv, plot_class_suv, plot_Embarked_suv, plot_sex_died ,plot_class_died , plot_Embarked_died , nrow = 2)
+  
+  return(result)
+  
+  
 }
 
+   
+#'2a - vi)
+#' Additional functions suitable for description and visualization
+#' The function takes two variables, var1 and var2, as inputs. It then creates a mosaic plot using these variables
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a mosaicplot
+Mosaikplot <- function(var1, var2){
+  mosaicplot(table(var1, var2 ), main = "Mosaic Plot", shade = TRUE, xlab = deparse(substitute(var1)) , ylab = deparse(substitute(var2)))
+}
 
+#' The function takes two variables, var1 and var2, as inputs. It then creates a boxplot of var2 against var1, with a trendline added.
+#' @param var1 one Variable
+#' @param var2 another vaiable
+#' @return a boxplot with trendlinie
+
+Boxplots_with_Trendline <- function(var1, var2) {
+  plot(var1, var2, main = "Boxplot with Trendline",
+       xlab = deparse(substitute(var1)), ylab = deparse(substitute(var2)))
+  abline(lm(var2 ~ var1), col = "red")
+}

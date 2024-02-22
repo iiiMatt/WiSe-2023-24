@@ -6,7 +6,7 @@ source("utils.R")
 #' in working directory 
 generate_preprocessed_data()  
 
-dataset = readRDS("titanic_cleaned.Rds")
+dataset <- readRDS("titanic_cleaned.Rds")
 
 #' start of exercise 4)
 #' call functions from utils.R (exercise 2) 
@@ -22,9 +22,10 @@ str(dataset)
 #'alpha = 0.05 but did in total 4 tests 
 #'bonferront adjustment: alpha_adj = 0.05/4 = 0.0125
 
+
 #######################################################################
 #survived and embarked 
-surv_embarked = chisq_test_plus_table(dataset$Survived, dataset$Embarked)
+surv_embarked <- chisq_test_plus_table(dataset$Survived, dataset$Embarked)
 surv_embarked[1]
 'kat_var2
 kat_var1 Cherbourg Queenstown Southhampton
@@ -41,7 +42,7 @@ surv_embarked[2]
 
 #####################################################################
 #salutation and survival
-surv_salutation = chisq_test_plus_table(dataset$Survived, dataset$Salutation)
+surv_salutation <- chisq_test_plus_table(dataset$Survived, dataset$Salutation)
 surv_salutation[1]
 'kat_var2
 kat_var1 Master. Miss. Mr. Mrs.
