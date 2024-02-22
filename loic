@@ -1,0 +1,53 @@
+# 2a - v)
+visualisation_categorial_variable(titanic_cleaned)
+number_survivor = sum(titanic_cleaned$Survived == "yes")# 342 Person survive
+number_not_survivor = sum(titanic_cleaned$Survived == "no")# 549 Person died
+
+# 32% of survivors were men
+# 68% of survivors were women
+# 85% of deaths were men
+# 15% of deaths were women
+# more men have died than women
+# hypothesis: during the rescue, priority was given to women
+
+# 40% of survivors were in class1
+# 25% of survivors were in class2
+# 35% of survivors were in class3
+# 15% of deaths were in class1
+# 18% of deaths were in class2
+# 68% of deaths were in class3
+# the most deadly class was class 3
+# the least deadly class was class 1
+
+# 63% of survivors were embarked in Southhampton
+# 9% of survivors were embarked in Queenstown
+# 27% of survivors were embarked in Cherbourg
+# 1% of survivors were embarked in a place we dont know
+# 78% of deaths were embarked in Southhampton
+# 9% of deaths were embarked in Queenstown
+# 14% of deaths were embarked in Cherbourg
+# the embarcation place with the highest death rate were Southhampton
+
+# 2a - vi)
+Mosaikplot (titanic_cleaned$Pclass , titanic_cleaned$Sex)
+# the majority of people(man as woman) were in class 3 and there 
+# were more men than women
+
+Mosaikplot (titanic_cleaned$Embarked , titanic_cleaned$Sex)
+# the majority of people(man as woman) had embarked in Southhampton and there
+# were more men than women
+
+Mosaikplot (titanic_cleaned$Embarked , titanic_cleaned$Pclass)
+# the majority of people who embarked at southhampton or Queenstown were in class 3,
+# but at Cherbourg almost half the passengers were in class 1
+
+Boxplots_with_Trendline( titanic_cleaned$Pclass , titanic_cleaned$Fare)
+# the correlation between ticket price and class is positive
+# (the more you want to be in a good class, the more you have to pay)
+
+Boxplots_with_Trendline( titanic_cleaned$Sex , titanic_cleaned$Fare)
+# women generally paid more for tickets than men
+
+Boxplots_with_Trendline( titanic_cleaned$Survived , titanic_cleaned$Fare)
+# in general, those who survived were those who paid the highest ticket prices.
+# this is in line with the fact that the survival rate in class 1 was high and the death rate low.  
