@@ -3,7 +3,10 @@
 #' Extracts the salutations from the name column and creates a new column
 #' with the extracted salutations in the dataset.
 #'
-#' @param dataset
+#' Task 1
+#'
+#' @param dataset The titanic dataset.
+#' @return The same dataset with the additional column "Salutation".
 extract_salutations <- function(dataset) {
     SALUTS <- c(
         "Mr.", "Mrs.", "Miss.", "Master.",
@@ -43,8 +46,8 @@ extract_salutations <- function(dataset) {
 
     # Used salutations: Mr., Mrs., Miss. and Master.
 
-    # Rev. -> Typically, a Protestant minister will be addressed as “Reverend”
-    #         or in some cases “Pastor.” (will be Mr.)
+    # Rev. -> Typically, a Protestant minister will be addressed as "Reverend"
+    #         or in some cases "Pastor." (will be Mr.)
     # Col. -> Colonel (will be Mr.)
     # Major. -> Army Major (will be Mr.)
     # Don. -> Mr.
@@ -77,6 +80,14 @@ extract_salutations <- function(dataset) {
     dataset
 }
 
+#' Encode Variables
+#'
+#' Turns the columns "Sex", "Survived" and "Embarked" into a
+#' factor and "Pclass" into an ordered factor.
+#'
+#' Task 1
+#' @param dataset The titanic dataset.
+#' @return The same dataset with the above mentioned columns as factors.
 encode_variables <- function(dataset) {
     dataset$Sex <- factor(dataset$Sex,
         levels = c("male", "female"),
@@ -101,7 +112,10 @@ encode_variables <- function(dataset) {
 #'
 #' Fills in the missing ages in the dataset using the salutations
 #'
-#' @param dataset
+#' Task 1
+#'
+#' @param dataset The titanic dataset.
+#' @return The same dataset with a mutated "Age" column
 infer_age <- function(dataset) {
     SALUTS <- c("Mr.", "Mrs.", "Miss.", "Master.")
     salutations <- dataset[["Salutation"]]
@@ -123,18 +137,22 @@ cleanup <- function(dataset) {
     dataset
 }
 
-#' Extracts the factors Deck and Side from the column Cabin
+#' Extract Cabin Data
 #'
 #' Deck (which is the letter the cabin starts with) and Side (which is starboard
-#' for odd and port for even cabin numbers) are extracted from Cabin and coded
+#' for odd and port for even cabin numbers) are extracted from Cabin and encoded
 #' as factors.
 #'
-#' @details In the event that a combination of cabins is listed for each a group
+#' @details
+#' Task 1
+#'
+#' In the event that a combination of cabins is listed for each a group
 #' of multiple people the cabins are distributed arbitrarily among the group.
 #' Example: If there are four people in the dataset that have "A11 B12 C13" as
 #' the cabin, these four people will be assigned "A11" "B12" "C13" "A11". This
 #' way the number of people with a cabin can be guaranteed to be the same as in
-#' the original dataset.
+#' the original dataset and the distribution of cabins should roughly match the
+#' original data.
 #'
 #' @param dataset The original dataset
 #' @return The same dataset with the additional columns Deck and Side
@@ -178,10 +196,11 @@ extract_cabin_data <- function(dataset) {
 
 #' Generate Preprocessed Data
 #'
-#' Generates the preprocessed data from the `titanic.csv` by
-#' running all the preprocessing functions.
+#' Generates the preprocessed data from the dataset in "titanic.csv" by
+#' running all the preprocessing functions and saves the cleaned dataset
+#' into the file "titanic_cleaned.Rds".
 #'
-#' @returns preprocessed data
+#' Task 1
 generate_preprocessed_data <- function() {
     dataset <- read.csv("titanic.csv")
 
