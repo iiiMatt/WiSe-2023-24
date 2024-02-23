@@ -59,7 +59,7 @@ Description:
 
 Usage:
 
-     visualize_categorical_variables(df)
+     visualisation_categorial_variable(df)
      
 Arguments:
 
@@ -71,7 +71,7 @@ Details:
 
 Value:
 
-     Returns a grid of three plots visualizing the survival rates by
+     Returns a grid of six plots visualizing the survival rates by
      Passenger Class, Sex, and Embarkation Point.
 
 Calculate Descriptive and Inferential Statistics for a Metric and a
