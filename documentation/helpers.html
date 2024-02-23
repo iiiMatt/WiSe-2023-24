@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Phi Measure of Dispersion for Categorial Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for phi_dispersion"><tr><td>phi_dispersion</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Phi Measure of Dispersion for Categorial Data</h2>
+
+<h3>Description</h3>
+
+<p>Computes the phi measure of dispersion which produces more intuitive numbers
+between 0 and 1 but is not popular unlike entropy.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+phi_dispersion(x, na.rm = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A categorial variable.</p>
+</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+<p>Indicates if NA values should be removed before calculation.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2b
+</p>
+
+
+<h3>Value</h3>
+
+<p>A floating point number between 0 and 1 (lower than entropy).
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Statistical Mode</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for statistical_mode"><tr><td>statistical_mode</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Statistical Mode</h2>
+
+<h3>Description</h3>
+
+<p>Returns the most frequently occuring value in x. If there are multiple values
+that occur most frequently this function returns all of them.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+statistical_mode(x, na.rm = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>Can be a list, vector or factor.</p>
+</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+<p>Indicates if NA values should be removed before calculation.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2b
+</p>
+
+
+<h3>Value</h3>
+
+<p>The statistical mode of x. One or multiple values.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Empirical Entropy</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for empirical_entropy"><tr><td>empirical_entropy</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Empirical Entropy</h2>
+
+<h3>Description</h3>
+
+<p>Computes the average empirical entropy (according to Boltzmann's formula) of
+all levels. This is a measure of dispersion that returns 1 if every level
+occurs with the same frequency and 0 if only one level occurs 100% of the
+time.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+empirical_entropy(x, na.rm = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A categorial variable.</p>
+</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+<p>Indicates if NA values should be removed before calculation.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2b
+</p>
+
+
+<h3>Value</h3>
+
+<p>A floating point number between 0 and 1.
+</p>
+
+
+</body></html>
+

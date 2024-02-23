@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Mosaicplot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Mosaikplot"><tr><td>Mosaikplot</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Mosaicplot</h2>
+
+<h3>Description</h3>
+
+<p>The function takes two variables, var1 and var2, as inputs. It then creates a mosaic plot using these variables
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Mosaikplot(var1, var2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>var1</code></td>
+<td>
+<p>One variable</p>
+</td></tr>
+<tr valign="top"><td><code>var2</code></td>
+<td>
+<p>Another variable</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a vi.
+</p>
+
+
+<h3>Value</h3>
+
+<p>a mosaicplot
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Boxplots with Trendline</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Boxplots_with_Trendline"><tr><td>Boxplots_with_Trendline</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Boxplots with Trendline</h2>
+
+<h3>Description</h3>
+
+<p>The function takes two variables, var1 and var2, as inputs. It then creates a boxplot of var2 against var1, with a trendline added.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+Boxplots_with_Trendline(var1, var2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>var1</code></td>
+<td>
+<p>One variable</p>
+</td></tr>
+<tr valign="top"><td><code>var2</code></td>
+<td>
+<p>Another variable</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a vi.
+</p>
+
+
+<h3>Value</h3>
+
+<p>a boxplot with trendlinie
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Visualize Categorical Variables Relation to Survival on...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for visualize_categorical_variables"><tr><td>visualize_categorical_variables</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Visualize Categorical Variables Relation to Survival on Titanic</h2>
+
+<h3>Description</h3>
+
+<p>This function creates visualizations for the relationship between
+survival and three categorical variables:
+Passenger Class (Pclass), Sex, and Embarkation Point (Embarked)
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+visualize_categorical_variables(df)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+<p>A dataframe</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a v.
+</p>
+
+
+<h3>Value</h3>
+
+<p>Returns a grid of three plots visualizing the survival rates by
+Passenger Class, Sex, and Embarkation Point.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculate Descriptive and Inferential Statistics for a Metric...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for calculateBivariateStats"><tr><td>calculateBivariateStats</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Calculate Descriptive and Inferential Statistics
+for a Metric and a Dichotomous Variable</h2>
+
+<h3>Description</h3>
+
+<p>This function calculates and outputs the mean, standard deviation,
+and performs a t-test to assess the difference in a metric variable
+across two groups defined by a dichotomous variable.
+It's useful for understanding how the metric variable differs between
+two groups, such as comparing the average fare paid by passengers who
+survived vs. those who did not.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+calculateBivariateStats(data, metricVar, dichotomousVar)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>A dataframe containing the dataset.</p>
+</td></tr>
+<tr valign="top"><td><code>metricVar</code></td>
+<td>
+<p>The name of the metric variable as a string.</p>
+</td></tr>
+<tr valign="top"><td><code>dichotomousVar</code></td>
+<td>
+<p>The name of the dichotomous
+variable as a string.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a iv.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Bivariate descriptive statistics for categorial variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for chisq_test_plus_table"><tr><td>chisq_test_plus_table</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Bivariate descriptive statistics for categorial variables</h2>
+
+<h3>Description</h3>
+
+<p>Calcualates and prints the results of descriptive bivariate statistics of a
+contengency table  and a chi squared test for two categorical variables.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+chisq_test_plus_table(kat_var1, kat_var2)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>kat_var1</code></td>
+<td>
+<p>A kategorical variable</p>
+</td></tr>
+<tr valign="top"><td><code>kat_var2</code></td>
+<td>
+<p>A second kategorical variable with the same length as the first</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a iii.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Descriptive statistics for a metric variable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for describe_metric"><tr><td>describe_metric</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Descriptive statistics for a metric variable</h2>
+
+<h3>Description</h3>
+
+<p>Returns some descriptive statistics for a metric variable in form of a
+dataframe for simple formatting. All NA values are removed before
+calculation.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+describe_metric(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A metric variable.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a i.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A one row dataframe with the different statistics in columns.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Descriptive statistics for a categorial variable</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for describe_categorial"><tr><td>describe_categorial</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Descriptive statistics for a categorial variable</h2>
+
+<h3>Description</h3>
+
+<p>Prints descriptive statistics for a categorial variable x and additional
+ones for ordered factors. Namely the calculated statistics are the
+statistical mode, empirical entropy and phi measure of dispersion and
+optionally the median and quartiles.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+describe_categorial(x, name = deparse(match.call()$x), na.rm = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A factor (may be ordered).</p>
+</td></tr>
+<tr valign="top"><td><code>name</code></td>
+<td>
+<p>The name of the factor. By default whatever was passed to x so
+for describe_categorial(data$Pclass) name would default to &quot;data$Pclass&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>na.rm</code></td>
+<td>
+<p>Indicates if NA values should be removed before calculation.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 2a ii.
+</p>
+
+
+</body></html>
+

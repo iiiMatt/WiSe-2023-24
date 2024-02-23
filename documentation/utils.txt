@@ -1,0 +1,178 @@
+Mosaicplot
+
+Description:
+
+     The function takes two variables, var1 and var2, as inputs. It
+     then creates a mosaic plot using these variables
+
+Usage:
+
+     Mosaikplot(var1, var2)
+     
+Arguments:
+
+    var1: One variable
+
+    var2: Another variable
+
+Details:
+
+     Task 2a vi.
+
+Value:
+
+     a mosaicplot
+
+Boxplots with Trendline
+
+Description:
+
+     The function takes two variables, var1 and var2, as inputs. It
+     then creates a boxplot of var2 against var1, with a trendline
+     added.
+
+Usage:
+
+     Boxplots_with_Trendline(var1, var2)
+     
+Arguments:
+
+    var1: One variable
+
+    var2: Another variable
+
+Details:
+
+     Task 2a vi.
+
+Value:
+
+     a boxplot with trendlinie
+
+Visualize Categorical Variables Relation to Survival on Titanic
+
+Description:
+
+     This function creates visualizations for the relationship between
+     survival and three categorical variables: Passenger Class
+     (Pclass), Sex, and Embarkation Point (Embarked)
+
+Usage:
+
+     visualize_categorical_variables(df)
+     
+Arguments:
+
+      df: A dataframe
+
+Details:
+
+     Task 2a v.
+
+Value:
+
+     Returns a grid of three plots visualizing the survival rates by
+     Passenger Class, Sex, and Embarkation Point.
+
+Calculate Descriptive and Inferential Statistics for a Metric and a
+Dichotomous Variable
+
+Description:
+
+     This function calculates and outputs the mean, standard deviation,
+     and performs a t-test to assess the difference in a metric
+     variable across two groups defined by a dichotomous variable. It's
+     useful for understanding how the metric variable differs between
+     two groups, such as comparing the average fare paid by passengers
+     who survived vs. those who did not.
+
+Usage:
+
+     calculateBivariateStats(data, metricVar, dichotomousVar)
+     
+Arguments:
+
+    data: A dataframe containing the dataset.
+
+metricVar: The name of the metric variable as a string.
+
+dichotomousVar: The name of the dichotomous variable as a string.
+
+Details:
+
+     Task 2a iv.
+
+Bivariate descriptive statistics for categorial variables
+
+Description:
+
+     Calcualates and prints the results of descriptive bivariate
+     statistics of a contengency table and a chi squared test for two
+     categorical variables.
+
+Usage:
+
+     chisq_test_plus_table(kat_var1, kat_var2)
+     
+Arguments:
+
+kat_var1: A kategorical variable
+
+kat_var2: A second kategorical variable with the same length as the
+          first
+
+Details:
+
+     Task 2a iii.
+
+Descriptive statistics for a metric variable
+
+Description:
+
+     Returns some descriptive statistics for a metric variable in form
+     of a dataframe for simple formatting. All NA values are removed
+     before calculation.
+
+Usage:
+
+     describe_metric(x)
+     
+Arguments:
+
+       x: A metric variable.
+
+Details:
+
+     Task 2a i.
+
+Value:
+
+     A one row dataframe with the different statistics in columns.
+
+Descriptive statistics for a categorial variable
+
+Description:
+
+     Prints descriptive statistics for a categorial variable x and
+     additional ones for ordered factors. Namely the calculated
+     statistics are the statistical mode, empirical entropy and phi
+     measure of dispersion and optionally the median and quartiles.
+
+Usage:
+
+     describe_categorial(x, name = deparse(match.call()$x), na.rm = TRUE)
+     
+Arguments:
+
+       x: A factor (may be ordered).
+
+    name: The name of the factor. By default whatever was passed to x
+          so for describe_categorial(data$Pclass) name would default to
+          "data$Pclass".
+
+   na.rm: Indicates if NA values should be removed before calculation.
+
+Details:
+
+     Task 2a ii.
+
