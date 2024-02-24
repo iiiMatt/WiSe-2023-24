@@ -88,11 +88,12 @@ kat_var1 Master. Miss. Mr. Mrs.
 #' Female passenger got helped to get to the boats.
 #' Men with a title might as well. 
 #' Most men died 
+#'also: less female than men: when they are prioritized ratio goes up quicker
 surv_salutation[2]
 #'p-value = 2.2e-16 < alpha_adj
 #'statistically significant evidence to support the alternative hypothesis
 #'evidence that there is a significant relationship between 
-#'embarkation and survival 
+#'salutation and survival 
 #'Numbers in contengency show more survival of female passangers 
 #'and likely death for a Mr.
 
