@@ -158,28 +158,28 @@ visualisation_categorial_variable <- function(df){
   # I calculate the relative frequency of the  survivors according to the class
   # they have. 
   
-  class1_suv <- sum(df$Pclass == 1 & df$Survive == "yes") / sum(df$Survive == "yes")
-  class2_suv <- sum(df$Pclass == 2 & df$Survive == "yes") / sum(df$Survive == "yes")
-  class3_suv <- sum(df$Pclass == 3 & df$Survive == "yes") / sum(df$Survive == "yes")
+  class1_suv <- sum(df$Pclass == 1 & df$Survived == "yes") / sum(df$Survived == "yes")
+  class2_suv <- sum(df$Pclass == 2 & df$Survived == "yes") / sum(df$Survived == "yes")
+  class3_suv <- sum(df$Pclass == 3 & df$Survived == "yes") / sum(df$Survived == "yes")
   
   # I calculate the Relative frequency of the  survivors according to the sex
   # they have. 
   
-  survivemen <- sum(df$Sex == "male" & df$Survive == "yes") / sum(df$Survive == "yes")
-  survivewomen <- sum(df$Sex == "female" & df$Survive == "yes") / sum(df$Survive == "yes")
+  survivemen <- sum(df$Sex == "male" & df$Survived == "yes") / sum(df$Survived == "yes")
+  survivewomen <- sum(df$Sex == "female" & df$Survived == "yes") / sum(df$Survived == "yes")
   
   # I calculate the relative frequency of the  survivors according to the embarked place 
   # they have. 
   
-  embarkedSouthhampton_suv <- sum(df$Embarked == "Southhampton" & df$Survive == "yes") / sum(df$Survive == "yes")
-  embarkedQueenstown_suv <- sum(df$Embarked == "Queenstown" & df$Survive == "yes") / sum(df$Survive == "yes")
-  embarkedCherbourg_suv <- sum(df$Embarked == "Cherbourg" & df$Survive == "yes") / sum(df$Survive == "yes")
+  embarkedSouthhampton_suv <- sum(df$Embarked == "Southhampton" & df$Survived == "yes") / sum(df$Survived == "yes")
+  embarkedQueenstown_suv <- sum(df$Embarked == "Queenstown" & df$Survived == "yes") / sum(df$Survived == "yes")
+  embarkedCherbourg_suv <- sum(df$Embarked == "Cherbourg" & df$Survived == "yes") / sum(df$Survived == "yes")
   
   # In the column i replace the NA by an empty space. Then I count the lines whose content has length 0
   # and I calculate their relative frequenty of the  survivors according that we dont know where they embarked .
   
   df$Embarked[is.na(df$Embarked)] <- ""
-  embarkedUnknown_suv <- sum(nchar(df$Embarked) == 0 & df$Survive == "yes")/ sum(df$Survive == "yes")
+  embarkedUnknown_suv <- sum(nchar(as.character(df$Embarked)) == 0 & df$Survived == "yes")/ sum(df$Survived == "yes")
   
   # here i create  dataframes for the survivors variables with two columns (the variable and relative frequency) 
   
@@ -217,28 +217,28 @@ visualisation_categorial_variable <- function(df){
   # I calculate the relative frequency of the  dead persons according to the class
   # they have.
   
-  class1_died <- sum(df$Pclass == 1 & df$Survive == "no") / sum(df$Survive == "no")
-  class2_died <- sum(df$Pclass == 2 & df$Survive == "no") / sum(df$Survive == "no")
-  class3_died <- sum(df$Pclass == 3 & df$Survive == "no") / sum(df$Survive == "no")
+  class1_died <- sum(df$Pclass == 1 & df$Survived == "no") / sum(df$Survived == "no")
+  class2_died <- sum(df$Pclass == 2 & df$Survived == "no") / sum(df$Survived == "no")
+  class3_died <- sum(df$Pclass == 3 & df$Survived == "no") / sum(df$Survived == "no")
   
   # I calculate the relative frequency of the  dead persons according to the sex
   # they have
   
-  diedmen <- sum(df$Sex == "male" & df$Survive == "no") / sum(df$Survive == "no")
-  diedwomen <- sum(df$Sex == "female" & df$Survive == "no") / sum(df$Survive == "no")
+  diedmen <- sum(df$Sex == "male" & df$Survived == "no") / sum(df$Survived == "no")
+  diedwomen <- sum(df$Sex == "female" & df$Survived == "no") / sum(df$Survived == "no")
   
   # I calculate the relative frequency of the  dead persons according to the the embarked place
   # they have 
   
-  embarkedSouthhampton_died <- sum(df$Embarked == "Southhampton" & df$Survive == "no") / sum(df$Survive == "no")
-  embarkedQueenstown_died <- sum(df$Embarked == "Queenstown" & df$Survive == "no") / sum(df$Survive == "no")
-  embarkedCherbourg_died <- sum(df$Embarked == "Cherbourg" & df$Survive == "no") / sum(df$Survive == "no")
+  embarkedSouthhampton_died <- sum(df$Embarked == "Southhampton" & df$Survived == "no") / sum(df$Survived == "no")
+  embarkedQueenstown_died <- sum(df$Embarked == "Queenstown" & df$Survived == "no") / sum(df$Survived == "no")
+  embarkedCherbourg_died <- sum(df$Embarked == "Cherbourg" & df$Survived == "no") / sum(df$Survived == "no")
   
   # In the column i replace the NA by an empty space. Then I count the lines whose content has length 0
   # and I calculate their relative frequenty of the  dead person according that we dont know where they embarked .
   
   df$Embarked[is.na(df$Embarked)] <- ""
-  embarkedUnknown_died <- sum(nchar(df$Embarked) == 0 & df$Survive == "no")/ sum(df$Survive == "no")
+  embarkedUnknown_died <- sum(nchar(as.character(df$Embarked)) == 0 & df$Survived == "no")/ sum(df$Survived == "no")
   
   # here i create  dataframes for the dead persons variables with two columns (the variable and relative frequency)
   
