@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Encode Variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for encode_variables"><tr><td>encode_variables</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Encode Variables</h2>
+
+<h3>Description</h3>
+
+<p>Turns the columns &quot;Sex&quot;, &quot;Survived&quot; and &quot;Embarked&quot; into a
+factor and &quot;Pclass&quot; into an ordered factor.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+encode_variables(dataset)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+<p>The titanic dataset.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 1
+</p>
+
+
+<h3>Value</h3>
+
+<p>The same dataset with the above mentioned columns as factors.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Salutations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for extract_salutations"><tr><td>extract_salutations</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extract Salutations</h2>
+
+<h3>Description</h3>
+
+<p>Extracts the salutations from the name column and creates a new column
+with the extracted salutations in the dataset.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+extract_salutations(dataset)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+<p>The titanic dataset.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 1
+</p>
+
+
+<h3>Value</h3>
+
+<p>The same dataset with the additional column &quot;Salutation&quot;.
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Extract Cabin Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for extract_cabin_data"><tr><td>extract_cabin_data</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Extract Cabin Data</h2>
+
+<h3>Description</h3>
+
+<p>Deck (which is the letter the cabin starts with) and Side (which is starboard
+for odd and port for even cabin numbers) are extracted from Cabin and encoded
+as factors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+extract_cabin_data(dataset)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+<p>The original dataset</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 1
+</p>
+<p>In the event that a combination of cabins is listed for each a group
+of multiple people the cabins are distributed arbitrarily among the group.
+Example: If there are four people in the dataset that have &quot;A11 B12 C13&quot; as
+the cabin, these four people will be assigned &quot;A11&quot; &quot;B12&quot; &quot;C13&quot; &quot;A11&quot;. This
+way the number of people with a cabin can be guaranteed to be the same as in
+the original dataset and the distribution of cabins should roughly match the
+original data.
+</p>
+
+
+<h3>Value</h3>
+
+<p>The same dataset with the additional columns Deck and Side
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Generate Preprocessed Data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for generate_preprocessed_data"><tr><td>generate_preprocessed_data</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Generate Preprocessed Data</h2>
+
+<h3>Description</h3>
+
+<p>Generates the preprocessed data from the dataset in &quot;titanic.csv&quot; by
+running all the preprocessing functions and saves the cleaned dataset
+into the file &quot;titanic_cleaned.Rds&quot;.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+generate_preprocessed_data()
+</pre>
+
+
+<h3>Details</h3>
+
+<p>Task 1
+</p>
+
+
+</body></html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Infer Age</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for infer_age"><tr><td>infer_age</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Infer Age</h2>
+
+<h3>Description</h3>
+
+<p>Fills in the missing ages in the dataset using the salutations
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+infer_age(dataset)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+<p>The titanic dataset.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Task 1
+</p>
+
+
+<h3>Value</h3>
+
+<p>The same dataset with a mutated &quot;Age&quot; column
+</p>
+
+
+</body></html>
+

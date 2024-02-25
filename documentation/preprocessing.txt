@@ -1,0 +1,117 @@
+Encode Variables
+
+Description:
+
+     Turns the columns "Sex", "Survived" and "Embarked" into a factor
+     and "Pclass" into an ordered factor.
+
+Usage:
+
+     encode_variables(dataset)
+     
+Arguments:
+
+ dataset: The titanic dataset.
+
+Details:
+
+     Task 1
+
+Value:
+
+     The same dataset with the above mentioned columns as factors.
+
+Extract Salutations
+
+Description:
+
+     Extracts the salutations from the name column and creates a new
+     column with the extracted salutations in the dataset.
+
+Usage:
+
+     extract_salutations(dataset)
+     
+Arguments:
+
+ dataset: The titanic dataset.
+
+Details:
+
+     Task 1
+
+Value:
+
+     The same dataset with the additional column "Salutation".
+
+Extract Cabin Data
+
+Description:
+
+     Deck (which is the letter the cabin starts with) and Side (which
+     is starboard for odd and port for even cabin numbers) are
+     extracted from Cabin and encoded as factors.
+
+Usage:
+
+     extract_cabin_data(dataset)
+     
+Arguments:
+
+ dataset: The original dataset
+
+Details:
+
+     Task 1
+
+     In the event that a combination of cabins is listed for each a
+     group of multiple people the cabins are distributed arbitrarily
+     among the group. Example: If there are four people in the dataset
+     that have "A11 B12 C13" as the cabin, these four people will be
+     assigned "A11" "B12" "C13" "A11". This way the number of people
+     with a cabin can be guaranteed to be the same as in the original
+     dataset and the distribution of cabins should roughly match the
+     original data.
+
+Value:
+
+     The same dataset with the additional columns Deck and Side
+
+Generate Preprocessed Data
+
+Description:
+
+     Generates the preprocessed data from the dataset in "titanic.csv"
+     by running all the preprocessing functions and saves the cleaned
+     dataset into the file "titanic_cleaned.Rds".
+
+Usage:
+
+     generate_preprocessed_data()
+     
+Details:
+
+     Task 1
+
+Infer Age
+
+Description:
+
+     Fills in the missing ages in the dataset using the salutations
+
+Usage:
+
+     infer_age(dataset)
+     
+Arguments:
+
+ dataset: The titanic dataset.
+
+Details:
+
+     Task 1
+
+Value:
+
+     The same dataset with a mutated "Age" column
+

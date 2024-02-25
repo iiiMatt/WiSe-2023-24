@@ -1,0 +1,79 @@
+Phi Measure of Dispersion for Categorial Data
+
+Description:
+
+     Computes the phi measure of dispersion which produces more
+     intuitive numbers between 0 and 1 but is not popular unlike
+     entropy.
+
+Usage:
+
+     phi_dispersion(x, na.rm = TRUE)
+     
+Arguments:
+
+       x: A categorial variable.
+
+   na.rm: Indicates if NA values should be removed before calculation.
+
+Details:
+
+     Task 2b
+
+Value:
+
+     A floating point number between 0 and 1 (lower than entropy).
+
+Statistical Mode
+
+Description:
+
+     Returns the most frequently occuring value in x. If there are
+     multiple values that occur most frequently this function returns
+     all of them.
+
+Usage:
+
+     statistical_mode(x, na.rm = TRUE)
+     
+Arguments:
+
+       x: Can be a list, vector or factor.
+
+   na.rm: Indicates if NA values should be removed before calculation.
+
+Details:
+
+     Task 2b
+
+Value:
+
+     The statistical mode of x. One or multiple values.
+
+Empirical Entropy
+
+Description:
+
+     Computes the average empirical entropy (according to Boltzmann's
+     formula) of all levels. This is a measure of dispersion that
+     returns 1 if every level occurs with the same frequency and 0 if
+     only one level occurs 100% of the time.
+
+Usage:
+
+     empirical_entropy(x, na.rm = TRUE)
+     
+Arguments:
+
+       x: A categorial variable.
+
+   na.rm: Indicates if NA values should be removed before calculation.
+
+Details:
+
+     Task 2b
+
+Value:
+
+     A floating point number between 0 and 1.
+
