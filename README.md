@@ -28,3 +28,6 @@ The plots that analysis.R produces as a pdf export.
 
 ## How to run
 It is enough to run [analysis.R](analysis.R) as this will call [preprocessing.R](preprocessing.R) and generate a new [titanic_cleaned.Rds](titanic_cleaned.Rds) which it reads the data from. The working directory has to be set to WiSe-2023-24 (the base folder of the repository) beforehand so it can find the function scripts and the csv file.
+
+## Insights
+We discussed our conclusions from the data in [this issue](../../issues/30).
